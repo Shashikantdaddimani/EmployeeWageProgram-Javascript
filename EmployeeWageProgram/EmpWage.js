@@ -1,31 +1,30 @@
 
 
- const Is_Part_Time=1;
- const Is_Full_Time=2;
- const Part_Time_Hours=4;
- const Full_Time_Hours=8;
- const Wage_Per_Hour=20;
- const Num_Of_Working_Day =20;
- /*
- getWorkingHours is Method for Checking Employee Working hours
- */
- function getWorkingHours(empCheck){
-     switch(empCheck){
-         case Is_Part_Time:
-             return Part_Time_Hours;
-         case Is_Full_Time:
-             return Full_Time_Hours;
-         default:
-             return 0;
- 
+ const IS_PART_TIME = 1;
+ const IS_FULL_TIME = 2;
+ const PART_TIME_HOURS = 4;
+ const FULL_TIME_HOURS = 8;
+ const WAGE_PER_HOUR = 20;
+ const WORKING_DAYS_PER_MONTH = 20;
+ function EmployeeWage() {
+      
+     let workingHours = 0;
+     let workingHoursInMonth = 160;
+     let day = 1;
+     while (day <= WORKING_DAYS_PER_MONTH && workingHours <= workingHoursInMonth) {
+         let ramdomValue = Math.floor(Math.random() * 10) % 3;
+         switch (ramdomValue) {
+             case IS_FULL_TIME:
+                 workingHours += FULL_TIME_HOURS;
+                 break;
+             case IS_PART_TIME:
+                 workingHours += PART_TIME_HOURS
+                 break;
+             default:
+                 workingHours += 0;
+         }
+         day++;
      }
+     console.log("Employee Working hours in month : " + workingHours);
+     console.log("Employee Total wage per month : " + workingHours * WAGE_PER_HOUR);
  }
- let totalEmpHrs =0;
- for(let day =0;day<Num_Of_Working_Day;day++){
-     let empCheck = Math.floor(Math.random()*10)%3;
-     totalEmpHrs +=getWorkingHours(empCheck);
- 
- }
- let empWage =totalEmpHrs * Wage_Per_Hour;
- console.log("Total Hrs: "+totalEmpHrs+"Emp Wage: "+empWage);
- 
